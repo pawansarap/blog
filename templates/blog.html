@@ -1,0 +1,36 @@
+{% extends 'header.html' %}
+
+{% block title %}
+  Blog
+{% endblock %}
+
+{% block body %}
+  <div class="album py-5 bg-light">
+    <div class="container">
+      <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+        {% for blog in blogs %}
+          <div class="col">
+            <div class="card shadow-sm">
+              <!-- Dynamically add the image source and alt text -->
+              {% if blog.blogthumbnail %}
+                <img src="{{ blog.blogthumbnail.url }}" alt="{{ blog.blogtitle }}" class="card-img-top" />
+              {% else %}
+                <img src="https://www.google.com/imgres?imgurl=https%3A%2F%2Fimages.theconversation.com%2Ffiles%2F45159%2Foriginal%2Frptgtpxd-1396254731.jpg%3Fixlib%3Drb-1.1.0%26q%3D45%26auto%3Dformat%26w%3D754%26fit%3Dclip&tbnid=xuqgdIQArN1PQM&vet=12ahUKEwjn8_Lo8PuEAxWTwTgGHeUsCRsQMygBegQIARBy..i&imgrefurl=https%3A%2F%2Ftheconversation.com%2Fthe-50-great-books-on-education-24934&docid=KTPk2os1aq8tcM&w=754&h=502&q=book&ved=2ahUKEwjn8_Lo8PuEAxWTwTgGHeUsCRsQMygBegQIARBy" alt="{{ x.blogtitle }}" class="card-img-top" />
+              {% endif %}  
+              <div class="card-body">
+                <h5 class="card-title">{{ blog.blogtitle }}</h5>
+                <p class="card-text">{{ blog.blogdesc }}</p>
+                <div class="d-flex justify-content-between align-items-center">
+                  <div class="btn-group">
+                    <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
+                  </div>
+                  <small class="text-muted">{{ blog.blogdate }}</small>
+                </div>
+              </div>
+            </div>
+          </div>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+{% endblock %}
