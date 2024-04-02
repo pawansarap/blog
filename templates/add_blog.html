@@ -1,0 +1,31 @@
+{% extends 'header.html' %}
+{% block title %}
+  Add Blog
+{% endblock %}
+{% block body %}
+  <form action="/add-blog" method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <div style="margin: 10vw;">
+      <div class="mb-3">
+        <label for="exampleFormControlInput1" class="form-label">Email address</label>
+        <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com" name="blogemail" />
+      </div>
+      <div class="mb-3">
+        <label for="exampleFormControlTextarea1" class="form-label">Blog Title</label>
+        <input type="text" class="form-control" placeholder="blogtitle" aria-label="Username" aria-describedby="addon-wrapping" name="blogtitle" />
+      </div>
+      <div class="mb-3">
+        <label for="exampleFormControlTextarea1" class="form-label">Blog Description</label>
+        <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="blogdesc"></textarea>
+      </div>
+      <div class="mb-3">
+        <label for="exampleFormControlFile1">Blog Thumbnail</label>
+        <input type="file" class="form-control-file" id="exampleFormControlFile1" name="blogthumbnail" />
+      </div>
+      <div class="mb-3">
+        <button class="btn btn-primary btn-lg" type="submit">Submit</button>
+      </div>
+    </div>
+  </form>
+{% endblock %}
